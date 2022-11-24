@@ -25,9 +25,9 @@ export default function Home() {
   const [banner, setBanner] = useState<Array<Banner>>([]);
   const [secondbanner, setSecondbanner] = useState([]);
   const [allproduct, setAllproduct] = useState<Array<Allproduct>>([]);
-  // const [currentpage, setCurrentpage] = useState<number>(1);
   const [pagination, setPagination] = useState<any>([]);
   const [page, setPage] = useState(currentPage);
+
 
   useEffect(() => {
     const fetchData = async () => {

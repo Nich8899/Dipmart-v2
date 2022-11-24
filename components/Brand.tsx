@@ -46,7 +46,7 @@ function Brand({}: Props) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className=" w-[90px] h-[33px] pr-[30px] "
+          className=" w-full h-[30px] object-contain  "
         >
           <path
             strokeLinecap="round"

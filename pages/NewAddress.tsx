@@ -1,20 +1,13 @@
 import Link from "next/link";
-import React from "react";
-// import GoogleMapReact from "google-map-react";
+import {useMemo, useState} from "react";
 import { Input } from "@material-tailwind/react";
-
-// const MapMarker = ({ text }) => <div>{text}</div>;
+import { GoogleMap, useLoadScript, Marker  } from "@react-google-maps/api";
 
 export default function NewAddress() {
-  const [openTab, setOpenTab] = React.useState(true);
-  // const defaultProps = {
-  //   center: {
-  //     lat: 10.99835602,
-  //     lng: 77.01502627,
-  //   },
-  //   zoom: 11,
-  // };
-
+  const [openTab, setOpenTab] = useState(true);
+  const { isLoaded } = useLoadScript({googleMapsApiKey: "AIzaSyDr-3Ih23Jy1AwR40AxQZcoxGg58U5N0kE ",
+   });
+  if (!isLoaded) return <div>Loading...</div>
   return (
     <div>
       <div className="fixedNav shadow-sm p-4 flex justify-between items-center bg-white">
@@ -37,15 +30,7 @@ export default function NewAddress() {
         <h1 className="text-center font-bold text-xl">New Address</h1>
         <div />
       </div>
-      {/* <div style={{ height: "100vh", width: "100%" }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "MY API KEY IS HERE" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-      >
-        <MapMarker text="My Marker" />
-      </GoogleMapReact>
-    </div> */}
+      <Map />
       <div className="flex w-80 flex-col gap-4 ml-7 mt-6">
         <Input size="lg" className="bg-gray-200" label="Receiver Name" />
         <Input size="lg" className="bg-gray-200" label="Phone Number " />
@@ -181,6 +166,7 @@ export default function NewAddress() {
      <Input size="lg" className="bg-gray-200" label="e.g. friend House" />
       </div>
      </div>
+     <Link href="/ReviewPayment">
       <div>
         <button
           name="openmodal-btn"
@@ -192,6 +178,21 @@ export default function NewAddress() {
           </span>
         </button>
       </div>
+      </Link>
     </div>
+   
   );
+}
+ 
+function Map() {
+  // const center= useMemo(() =>({lat: 44, lng: -80}), []);
+  return (
+    <GoogleMap 
+    zoom={10} 
+    mapContainerClassName="w-full h-60"
+    center={{lat: 44, lng: -80}}
+    >
+    {/* <Marker position={center} /> */}
+    </GoogleMap>
+  )
 }

@@ -34,7 +34,7 @@ function Shopbybrand() {
         "https://dev.dipmarts.com/api/method/dipmarts_app.api.brandproduct",
         { params: { id: value ? value : "Apple" } }
       );
-      //[ (brand=== ? value : " ")]
+     
       setproduct(res.data.message.product_list);
       console.log(product);
     };
@@ -42,6 +42,10 @@ function Shopbybrand() {
   }, [value]);
 
   console.log(value);
+  const [title, setTitle] = useState('')
+  const handleClickMe = (id: string) => {
+    setTitle(id)
+  }
 
   return (
     <div>
@@ -49,11 +53,10 @@ function Shopbybrand() {
       <br />
       <div className="  absolute ">
         {brand.map((item: any) => (
-          <ul className="relative" key={item.id}>
+          <ul className="relative" key={item.id} onClick={() => handleClickMe(item.id)}>
             <li className="relative round-lg shadow-md ">
-              <button
-                className="flex flex-col  rounded-none text-center p-1 overflow-hidden text-gray-900 text-ellipsis whitespace-nowrap  hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
-                // href={"Shopbybrand?id:"+ item.name}
+              <button 
+                className="  rounded-none text-center p-1 overflow-hidden text-gray-900 text-ellipsis whitespace-nowrap  hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="dark"
                 onClick={() => setValue(item.id)}
@@ -71,11 +74,11 @@ function Shopbybrand() {
         ))}
       </div>
       <div className="w-full flex justify-between items-center ">
-        <h1 className=" text-sm ml-[100px]">Apple</h1>
+        <h1 className=" text-sm ml-[100px]">{title ? title : 'Apple'}</h1>
         <h1 className="text-blue-800/100 mr-5 text-sm">see all</h1>
       </div>
       <div>
-        <div className="grid grid-cols-3 gap-4 p-6 absolute left-12 top-30 ml-4">
+        <div className="grid grid-cols-3 gap-4 p-5 absolute left-12 top-30 ml-8">
           {product.map((item: any, index) => (
             <div
               key={index}

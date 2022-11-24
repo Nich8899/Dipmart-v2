@@ -5,7 +5,7 @@ import { ErrorAlert } from './alert';
 export const customAxios = axios.create({
     baseURL: 'https://dev.dipmarts.com',
     headers: {
-        "Authorization" : "Token 04d52c54859fccd:54afb897ed31a30"
+        "Authorization" : "Token 1ed917053b82da7:6f08810b432dd63"
     }
   });
   customAxios.interceptors.response.use(

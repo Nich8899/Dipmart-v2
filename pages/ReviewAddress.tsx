@@ -165,7 +165,7 @@ export default function checkOut({}: Props) {
             type="button"
             className=" w-11/12 py-[13px] bg-blue-900 text-center  rounded-xl ml-4 mt-72 "
           >
-            <span className="font-bold text-[18px] text-white">Confirm Address</span>
+            <span className="font-bold text-[18px] text-white">Create New Address</span>
           </button>
         </div>
         </Link>

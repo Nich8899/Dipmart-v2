@@ -1,11 +1,13 @@
-import Link from "next/link";
-import React from "react";
-import { Button } from "@material-tailwind/react";
-export default function ReviewPayment() {
+import Link from 'next/link'
+import React from 'react'
+
+
+
+export default function OrderDetail() {
   return (
     <div>
-      <div className="fixedNav shadow-sm p-4 flex justify-between items-center bg-white">
-        <Link href="/ReviewAddress">
+         <div className="fixedNav shadow-sm p-4 flex justify-between items-center bg-white">
+        <Link href="/ReviewPayment">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -21,139 +23,32 @@ export default function ReviewPayment() {
             />
           </svg>
         </Link>
-        <h1 className="text-center font-bold text-xl">Review Payment</h1>
+        <h1 className="text-center font-bold text-xl">Order Detail</h1>
         <div />
       </div>
-      <div className="flex flex-col5 mt-6 bg-gray-200 h-32">
-        <div className=" ml-4">
-          <h1 className="font-bold text-lg mb-2 ml-4">cart</h1>
-          <button className=" rounded-full w-12 h-12 ml-2 bg-green-900 focus:ring-4 focus:ring-blue-300  dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-8 h-8 ml-2 text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div className=" h-1.5 rounded-full w-16 absolute top-[144px] left-20 bg-green-900 "></div>
-        <div className=" ml-4">
-          <h1 className="font-bold text-lg mb-2 ml-16">Address</h1>
-          <button className="absolute top-[125px] left-36 ml-6 rounded-full w-12 h-12  bg-green-900 focus:ring-4 focus:ring-blue-300  dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-8 h-8 ml-2 text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div className=" h-1.5 rounded-full w-16 absolute top-[145px] right-20 bg-green-900"></div>
-        <div className=" ml-4">
-          <h1 className="font-bold text-lg mb-2 ml-12">Payment</h1>
-          <button className="absolute top-[125px] right-6  bg-purple-900 rounded-full w-12 h-12  focus:ring-4 focus:ring-blue-300  dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-8 h-8 ml-2 text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          </button>
-        </div>
+      <div className='rounded-lg border-2 mt-4 ml-7 w-80 h-40'>
+       <div className='mt-2 ml-7'>
+       <span className='text-blue-900 px-8 text-xs font-bold'>ORDER IN SAL-ORD-2022-00598</span>
+       <hr className="my-4 h-px mr-6 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+       <div className='flex flex-col2 gap-28 text-xs  text-gray-900/50'>
+        <span>PLACED ON</span>
+        <span>PAYMENT TYPE</span>
+       </div>
+       <div className='flex flex-col2 gap-12 text-[10px] font-bold mt-1'>
+        <span>02 NOV 2022 10:11AM</span>
+        <span className='ml-5'>CASH ON DELIVERY </span>
+       </div>
+       <div className='flex flex-col2 gap-24 text-xs  text-gray-900/50 mt-2'>
+        <span>TOTAL AMOUNT</span>
+        <span className='mr-4'>ORDER STATUS</span>
+       </div>
+       <div className='flex flex-col2 gap-32 text-xs font-bold mt-1'>
+        <span>$600.00</span>
+        <span className='ml-2'>Ordered </span>
+       </div>
+       </div>
       </div>
-      <div className="rounded-lg bg-gray-100 h-40 mt-4">
-        <div className="flex space-x-4 ml-3 ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-6 h-6 mt-3"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
-            />
-          </svg>
-          <h1 className="font-bold mt-3">Payment Method:</h1>
-        </div>
-        <div className=" flex flex-col2 ml-7 gap-8">
-          <div className="flex flex-col space-y-1 mt-7">
-            <h1 className=" text-gray-300 font-bold text-[10px]">
-              Cash On Delivery (COD)
-            </h1>
-            <Button className="h-10 w-36  bg-gray-300 ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-6 h-6 ml-8 -mt-1 stroke-blue-gray-300"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
-                />
-              </svg>
-            </Button>
-          </div>
-          <div className="flex flex-col space-y-1 mt-7">
-            <h1 className=" text-blue-900 font-bold text-[10px] ml-2">
-              Cash On Delivery (COD)
-            </h1>
-            <Button variant="outlined" className="h-10 w-36 bg-gray-300 ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-6 h-6 ml-8 -mt-1"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
-                />
-              </svg>
-            </Button>
-          </div>
-        </div>
-      </div>
-      <div className="border-2 mt-4 rounded-lg ">
+      <div className="border-2 mt-4 rounded-lg">
         <div className="flex space-x-4  ml-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -198,19 +93,21 @@ export default function ReviewPayment() {
             <p className="font-bold text-blue-800">Total <span className="text-blue-800 text-xs2">(Inc. VAT)</span></p>
             <span className="font-bold text-blue-800">$1450</span>
            </div>
-           <hr className=" ml-4 my-8 h-px w-11/12 bg-gray-400 border-0 dark:bg-gray-700"></hr>
-           <Link href="/Success">
-       <div className="py-4 -mt-4">
+          
+      </div>
+      <p className='mt-6 text-[10px] ml-4 text-gray-400'> <span className='text-red-600'>*</span> In case you want to cencel the order. please contact this number</p>
+      <span className='underline decoration-sky-500  text-[10px]  ml-6 text-blue-900 font-bold'>011 233 634</span>
+      <Link href="/Success">
+       <div className="py-4 mt-4">
           <button
             name="openmodal-btn"
             type="button"
             className=" w-11/12 py-[13px] bg-blue-900 text-center  rounded-xl ml-4  "
           >
-            <span className="font-bold text-[18px] text-white">Place order</span>
+            <span className="font-bold text-[18px] text-white">Tracking</span>
           </button>
         </div>
-        </Link>
-      </div>
+        </Link> 
     </div>
-  );
+  )
 }

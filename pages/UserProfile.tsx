@@ -258,7 +258,7 @@ export default function UserProfile({}: Props) {
         {/* Profile Copyright */}
         <div className="mt-[30px] w-[183px] mx-auto mt-[15px] ">
           <img
-            src="https://www.dipmarts.com/wp-content/themes/dipmarts/assets/images/DiPMart-Horizontal-Logo.png"
+            src="https://www.dipmarts.com/wp-content/themes/dipmarts/assets/images/DiPMarts-Horizontal-Logo.png"
             alt="DipMart Logo"
             className="w-[100px] h-[60px] object-contain mx-10 p-2  "
           />
