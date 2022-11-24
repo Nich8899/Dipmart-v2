@@ -7,9 +7,9 @@ function Addtowishlish() {
   const router = useRouter()
   const [wishlist, setWishlist] = useState([]);
   useEffect(() => {
-    return () => {
+    
       fetchData();
-    };
+  
   }, []);
 
   const fetchData = async () => {
