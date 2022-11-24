@@ -1,8 +1,10 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import NavbarBottom from "../components/NavbarBottom";
 import customAxios from "../http/axios";
 
 function Addtowishlish() {
+  const router = useRouter()
   const [wishlist, setWishlist] = useState([]);
   useEffect(() => {
     return () => {
@@ -17,9 +19,14 @@ function Addtowishlish() {
   };
 
   const handleDelete = (id) => {
-    customAxios.post("/api/method/dipmarts_app.api.itemtowishlist", {
-      product_id: id,
-    });
+   try {
+    customAxios.post("/api/method/dipmarts_app.api.itemtowishlist", 
+    {product_id: id,})
+    router.reload()
+   } catch (error: any) {
+    alert(error.message)
+    
+   }
   };
 
   return (

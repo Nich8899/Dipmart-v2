@@ -8,6 +8,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { iteratorSymbol } from "immer/dist/internal";
+import NavbarBottom from "../components/NavbarBottom";
+import { useRouter } from "next/router";
 interface MyCart {
   final_price: " string";
   noted: "string";
@@ -39,6 +41,7 @@ interface Product {
 
 
 export default function MyCart() {
+  const router = useRouter()
   const [result, setResult] = useState<Array<MyCart>>([]);
   const [cartRelate, setCartRelate] = useState([]);
   const [showUpdate, setShowUpdate] = useState(false);
@@ -90,7 +93,7 @@ export default function MyCart() {
       { product_id: id }
     );
     setSuccess(res.data.message);
-    console.log('id', id);
+   
     
   };
 
@@ -115,7 +118,12 @@ export default function MyCart() {
   }, []);
 
   const handleDelete = (id) => {
-    customAxios.post("/api/method/dipmarts_app.api.removecart", { id: id });
+    try {
+      customAxios.post("/api/method/dipmarts_app.api.removecart", { id: id })
+      router.reload()
+    } catch (error: any) {
+      alert(error.message)
+    }
   };
   const handleMeClick = (
     id: string,
@@ -185,6 +193,8 @@ export default function MyCart() {
       '<div className="swiper-slide">Slide ' + ++appendNumber + "</div>",
     ]);
   };
+ 
+  
   return (
     <div>
       <div className="fixedNav shadow-sm p-4 flex justify-between items-center bg-white">
@@ -207,7 +217,35 @@ export default function MyCart() {
         <h1 className="text-center font-bold text-xl">My cart</h1>
         <div />
       </div>
-      <div className="flex flex-col5 mt-6">
+
+      {
+        result.length === 0 ? <>
+          <div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJqtWEXPmoRa7l9IWAB3p0Tsw7Xgm5T2HJoQ&usqp=CAU" 
+        alt="logo"
+        className=' mt-30 my-8 ml-20'
+         />
+         <div className='flex flex-col space-y-0'>
+         <h1 className= 'font-bold text-blue-900 ml-24'>Your Shopping Cart is Empty</h1><br />
+        <p className='  ml-20 text-sm '> Looks like you have not added anything to</p>
+        <p className=' ml-44 text-sm'>your cart yet</p>
+         </div>  
+      </div>
+      <Link href="/">
+      <div className="mx-20 -mt-6">
+          <button
+            name="openmodal-btn"
+            type="button"
+            className=" w-60 h-18 py-[13px] bg-deep-purple-900 text-center  rounded-xl  mt-16 "
+          >
+            <span className="font-bold text-sm text-white">Start Shopping</span>
+          </button>
+        </div>
+        </Link>
+        <NavbarBottom />
+        </> : (
+          <>
+          <div className="flex flex-col5 mt-6">
         <div className=" ml-4">
           <h1 className="font-bold text-lg mb-2 ml-4">cart</h1>
           <button className=" rounded-full w-12 h-12 ml-2 bg-purple-900 focus:ring-4 focus:ring-blue-300  dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
@@ -553,6 +591,9 @@ export default function MyCart() {
           popupAdd={popupAdd}
         />
       ) : null}
+          </>
+        )
+      }
     </div>
   );
 }

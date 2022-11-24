@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { Input } from "@material-tailwind/react";
 
 export default function Forgotpassword() {

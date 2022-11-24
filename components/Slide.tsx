@@ -27,7 +27,7 @@ function Slideshow({banner}:any) {
           {banner.map((item: any) => (
             <SwiperSlide key={item.id}>
               <img
-                className="object-contain px-5 mt-6 rounded-lg  "
+                className="object-fill h-72 w-full px-5 mt-6 rounded-xl"
                 src={item.image}
               />
             </SwiperSlide>

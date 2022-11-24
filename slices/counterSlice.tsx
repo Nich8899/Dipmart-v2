@@ -2,28 +2,35 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface CounterState {
-  value: number;
+  cart: number;
+  wishlist: number;
 }
 
 const initialState: CounterState = {
-  value: 0,
+  cart: 0,
+  wishlist: 0
 };
 
 export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    incrementAddCart: (state) => {
+      state.cart += 1;
     },
-    decrement: (state) => {
-      state.value -= 1;
+    decrementAddCart: (state) => {
+      state.cart -= 1;
     },
-   
+    incrementWishList: (state) => {
+      state.wishlist += 1;
+    },
+    decrementWishList: (state) => {
+      state.wishlist -= 1;
+    },
   },
 });
 
 
-export const { increment, decrement } = counterSlice.actions;
+export const { incrementAddCart, decrementAddCart, incrementWishList,decrementWishList } = counterSlice.actions;
 
 export default counterSlice.reducer;

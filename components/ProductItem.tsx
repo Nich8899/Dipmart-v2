@@ -1,11 +1,10 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import customAxios from "../http/axios";
-import { increment } from "../slices/counterSlice";
+import { incrementAddCart} from "../slices/counterSlice";
 import { useDispatch } from "react-redux";
 
 function ProductItem({ product }: any) {
- 
   const [success, setSuccess] = useState("");
   const [btnColor, setBtnColor] = useState(product.in_wishlist);
   const dispatch = useDispatch();
@@ -25,6 +24,7 @@ function ProductItem({ product }: any) {
     );
     setSuccess(res.data.message);
     setBtnColor(true);
+    // dispatch(decrementWishList())
   };
   const handleAdd = async () => {
     const cart = {
@@ -42,20 +42,19 @@ function ProductItem({ product }: any) {
 
   return (
     <div className="flex flex-col drop-shadow-lg rounded-lg bg-white text-center p-3">
-      <div className=" bg-red-600 rounded-none text-[15px] absolute -left-1 top-2 -p-1">
+      <div className=" bg-blue-400 rounded-none text-[15px] absolute -left-1 top-2 -p-1">
         <h1>{product.is_top_sell}</h1>
-      </div>
+      </div >
       <div>
         {btnColor ? (
           <button
-        
             type="button"
             className={
               "rounded-full bg-slate-300 border-4 ml-16  absolute right-2 top-2 -p-1"
             }
             name="wishlistfalse"
             onClick={handleClick}
-       
+            
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,18 +74,19 @@ function ProductItem({ product }: any) {
               "rounded-full bg-slate-300 border-4 ml-16  absolute right-2 top-2 -p-1"
             }
             onClick={handleChangeColor1}
+            //onChange={() => dispatch(decrementWishList())}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               className="w-6 h-6"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
               />
             </svg>
@@ -101,19 +101,20 @@ function ProductItem({ product }: any) {
           className="w-full h-[140px] object-contain "
         />
       </Link>
-      <h1 className="  font-bold w-[108px] h-[15px] bg-red-6000 text-left">
+      <h1 className="  font-bold  bg-red-6000 text-left">
         {product.name}
       </h1>
-    
+
       <div className="flex flex-row-reverse space-x-4 space-x-reverse mt-4 justify-between ">
-        <div onClick={() => dispatch(increment())}>
+        <div onClick={() => dispatch(incrementAddCart())}>
+        
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className=" w-[30px] h-[35px] -pb-4"
+            className=" w-6 h-6 -pb-4 rounded-full border-2 stroke-blue-500"
             onClick={() => {
               handleAdd();
               {
@@ -124,7 +125,7 @@ function ProductItem({ product }: any) {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              d="M12 4.5v15m7.5-7.5h-15"
             />
           </svg>
         </div>

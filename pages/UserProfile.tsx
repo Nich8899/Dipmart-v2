@@ -65,8 +65,11 @@ export default function UserProfile({}: Props) {
        
           </div>
           {/* Order Button and Wish List */}
-          <div className="grid grid-cols-4 gap-4 p-5 ml-4">
-            <div className="w-[60px] h-[43px] ">
+        
+        </div>
+        <div className="left-0 right-0  py-4 max-w-[1024px] max-w-sm-[10px] bg-gray-200">
+           <div className="flex justify-evenly space-x-8 ">
+           <div >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -83,7 +86,7 @@ export default function UserProfile({}: Props) {
               </svg>
               <span>Orders</span>
             </div>
-            <div className="w-[60px] h-[43px] ">
+            <div >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -101,7 +104,7 @@ export default function UserProfile({}: Props) {
               <span>Wishlist</span>
             </div>
 
-            <div className="w-[60px] h-[43px] ">
+            <div >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -118,7 +121,7 @@ export default function UserProfile({}: Props) {
               </svg>
               <span>View</span>
             </div>
-            <div className="w-[60px] h-[43px] ">
+            <div >
               <svg
                 className="w-6 h-6  mx-4"
                 viewBox="0 0 23 21"
@@ -132,8 +135,8 @@ export default function UserProfile({}: Props) {
               </svg>
               <span>Coupons</span>
             </div>
+           </div>
           </div>
-        </div>
         {/* {setting component} */}
         <div className="pl-[30px] pr-[10px] pt-6">
           <div className="flex items-center justify-between">
@@ -245,15 +248,7 @@ export default function UserProfile({}: Props) {
           </div>
         </div>
 
-        {/* <div>
-          <button
-            name="openmodal-btn"
-            type="button"
-            className="w-full py-[15px] bg-blue-900 text-center  rounded-xl mt-[30px] "
-          >
-            <span className="font-bold text-[18px] text-white">Log Out</span>
-          </button>
-        </div> */}
+       
 
         {/* Profile Copyright */}
         <div className="mt-[30px] w-[183px] mx-auto mt-[15px] ">

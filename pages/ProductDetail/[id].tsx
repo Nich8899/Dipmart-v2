@@ -32,7 +32,7 @@ export default function ProductDetail() {
   const [open, setOpen] = useState(0);
   const router = useRouter();
   const { id } = router.query;
-  const initialCount = 0;
+  const initialCount = 1;
   const [count, setCount] = useState(initialCount);
 
   const incrementFive = () => {
@@ -48,8 +48,9 @@ export default function ProductDetail() {
       );
       setDetail(res.data.message);
     };
-    fetchData();
-  }, []);
+    if(id)
+      fetchData();
+  }, [id]);
 
   const handleClick = async () => {
     const res = await customAxios.post(
@@ -80,7 +81,7 @@ export default function ProductDetail() {
       qty: count,
       noted: "",
     };
-    console.log("cart", cart);
+    
 
     const res = await customAxios.post(
       "api/method/dipmarts_app.api.addtocart",
@@ -106,7 +107,8 @@ export default function ProductDetail() {
   return (
     <div>
       <nav className="fixedNav">
-        <div className="w-ful flex justify-between items-center  px-3 p-6">
+        <div className="w-full  flex justify-between items-center  px-3 p-6">
+          <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -124,6 +126,7 @@ export default function ProductDetail() {
             </Link>
           </svg>
 
+          </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -151,7 +154,7 @@ export default function ProductDetail() {
       </div>
 
       {/* product detail */}
-      <div className="bg-white myShadow mx-auto max-w-[1024px] max-w-sm-[0px] w-full  border-1 rounded-t-3xl">
+      <div className="bg-white myShadow mx-auto max-w-[1024px] max-w-sm-[0px] w-full border-1 rounded-t-3xl">
         <h1 className="font-bold text-xl pl-4 pt-4 ">{detail.name}</h1>
         <h1 className="text-purple-900 font-bold text-xl pl-4 pt-2">
           ${detail.default_price}
@@ -242,13 +245,16 @@ export default function ProductDetail() {
           <AccordionHeader onClick={() => handleOpen(1)}>
             Product Description
           </AccordionHeader>
-          <div className="w-3/4 grid grid-rows-4  ">
+          <div className="grid grid-cols-1">
             {detail.product_spec?.map((item: any) => (
               <AccordionBody key={item.id}>
-                <span className="whitespace-pre-wrap ">{item.value}</span>
-                <span>{item.value_spec[0].value}</span>
+               <div className="flex space-x-11">
+               <div className="">{item.value}</div>
+                <div>{item.value_spec[0].value}</div>
+               </div>
               </AccordionBody>
             ))}
+            
           </div>
         </Accordion>
         <Accordion open={open === 2} icon={<Icon id={2} open={open} />}>
@@ -256,7 +262,7 @@ export default function ProductDetail() {
             Fearture
           </AccordionHeader>
           <AccordionBody>
-            <div className="grid grid-cols-2 gap-4 p-6 ml-16">
+            <div className="grid grid-cols-2 gap-4  p-6 ml-16">
               {detail.product_feature?.map((item: any) => (
                 <div
                   key={item.id}
@@ -278,12 +284,12 @@ export default function ProductDetail() {
       </div>
 
       {/* card bttom */}
-      <div className=" sticky bottom-0 left-0 right-0 myShadow mx-auto py-2 max-w-[1024px] max-w-sm-[0px] bg-white h-16 mt-20 ">
-        <div className=" flex w-max gap-4   justify-center absolute top-3 left-7">
+      <div className=" fixed bottom-0 left-0 right-0 myShadow mx-auto py-4 max-w-[1024px] max-w-sm-[10px] bg-white ">
+        <div className=" flex justify-evenly space-x-8 ">
           {btnColor ? (
             <button
               type="button"
-              className={"rounded-lg w-12 h-10 border-2 border-black-900"}
+              className={"rounded-lg w-14 h-10 border-2 border-black-900"}
               name="wishlistfalse"
               onClick={handleClick}
             >
@@ -291,7 +297,7 @@ export default function ProductDetail() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="w-8 h-8 text-red-600  absolute top-1 left-2"
+                className="w-8 h-8 text-red-600 mx-2"
               >
                 <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
               </svg>
@@ -301,20 +307,20 @@ export default function ProductDetail() {
             <button
               name="wishlisttrue"
               type="button"
-              className={"rounded-lg w-12 h-10 border-2 border-black-900"}
+              className={"rounded-lg w-14 h-10 border-2 border-black-900"}
               onClick={handleChangeColor1}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-8 h-8  absolute top-1 left-2"
+                className="w-8 h-8 mx-2"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                 />
               </svg>
